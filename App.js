@@ -3,25 +3,43 @@ import { Button, View, Text } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
+const centerContents = {
+  flex: 1,
+  alignItems: 'center',
+  justifyContent: 'center'
+};
+
 class HomeScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Home Screen</Text>
         <Button
-          title="Go to Details"
-          onPress={() => this.props.navigation.navigate('Details')}
-        />
+          title="Dank Memes"
+          onPress={() => this.props.navigation.navigate('DankMemes')} />
+        <Button
+          title="Cat Videos"
+          onPress={() => this.props.navigation.navigate('CatVideos')} />  
       </View>
     );
   }
 }
 
-class DetailsScreen extends React.Component {
+class DankMemesScreen extends React.Component {
   render() {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Details Screen</Text>
+    return(
+      <View style={centerContents}>
+        <Text>Dank Memes Go Here</Text>
+      </View>
+    );
+  }
+}
+
+class CatVideosScreen extends React.Component {
+  render() {
+    return(
+      <View style={centerContents}>
+        <Text>Cat Videos Go Here</Text>
       </View>
     );
   }
@@ -30,7 +48,8 @@ class DetailsScreen extends React.Component {
 const RootStack = createStackNavigator(
   {
     Home: HomeScreen,
-    Details: DetailsScreen,
+    DankMemes: DankMemesScreen,
+    CatVideos: CatVideosScreen,
   },
   {
     initialRouteName: 'Home',
