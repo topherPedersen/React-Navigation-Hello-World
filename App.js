@@ -1,28 +1,42 @@
-import React, { Component } from 'react';
-import {
-  Button,
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
-import 'react-native-gesture-handler'
-import { NavigationNativeContainer } from '@react-navigation/native';
+import React from 'react';
+import { View, Text } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
+class HomeScreen extends React.Component {
   render() {
-    return(
-      <View>
-        <Button title="hello?"/>
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Home Screen</Text>
       </View>
     );
   }
 }
 
-export default App;
+class DetailsScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Details Screen</Text>
+      </View>
+    );
+  }
+}
+
+const RootStack = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Details: DetailsScreen,
+  },
+  {
+    initialRouteName: 'Home',
+  }
+);
+
+const AppContainer = createAppContainer(RootStack);
+
+export default class App extends React.Component {
+  render() {
+    return <AppContainer />;
+  }
+}
