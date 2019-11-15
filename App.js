@@ -1,65 +1,31 @@
-import * as React from 'react';
-import { Button, View, Text } from 'react-native';
+import React from 'react';
+import { Text, View } from 'react-native';
 import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-
-const centerContents = {
-  flex: 1,
-  alignItems: 'center',
-  justifyContent: 'center'
-};
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 class HomeScreen extends React.Component {
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Home Screen</Text>
-        <Button
-          title="Dank Memes"
-          onPress={() => this.props.navigation.navigate('DankMemes')} />
-        <Button
-          title="Cat Videos"
-          onPress={() => this.props.navigation.navigate('CatVideos')} />  
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>Home!</Text>
       </View>
     );
   }
 }
 
-class DankMemesScreen extends React.Component {
+class SettingsScreen extends React.Component {
   render() {
-    return(
-      <View style={centerContents}>
-        <Text>Dank Memes Go Here</Text>
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>Settings!</Text>
       </View>
     );
   }
 }
 
-class CatVideosScreen extends React.Component {
-  render() {
-    return(
-      <View style={centerContents}>
-        <Text>Cat Videos Go Here</Text>
-      </View>
-    );
-  }
-}
+const TabNavigator = createBottomTabNavigator({
+  Home: HomeScreen,
+  Settings: SettingsScreen,
+});
 
-const RootStack = createStackNavigator(
-  {
-    Home: HomeScreen,
-    DankMemes: DankMemesScreen,
-    CatVideos: CatVideosScreen,
-  },
-  {
-    initialRouteName: 'Home',
-  }
-);
-
-const AppContainer = createAppContainer(RootStack);
-
-export default class App extends React.Component {
-  render() {
-    return <AppContainer />;
-  }
-}
+export default createAppContainer(TabNavigator);
