@@ -8,6 +8,7 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
+import 'react-native-gesture-handler'
 import { NavigationNativeContainer } from '@react-navigation/native';
 
 class App extends Component {
