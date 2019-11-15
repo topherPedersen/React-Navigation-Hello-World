@@ -1,8 +1,9 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import { createAppContainer } from 'react-navigation';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 
 class HomeScreen extends React.Component {
 
@@ -36,10 +37,17 @@ class SettingsScreen extends React.Component {
 
 // REFERENCE (TabNavigator with Top Header Bar): https://github.com/react-navigation/react-navigation/issues/741
 
-const myTabNavigator = createBottomTabNavigator({
+const routeConfiguration = {
   Home: HomeScreen,
   Settings: SettingsScreen,
-});
+};
+
+const tabNavigatorConfiguration = {
+  tabBarPosition: 'bottom',
+  swipeEnabled: true,
+};
+
+const myTabNavigator = createMaterialTopTabNavigator(routeConfiguration, tabNavigatorConfiguration);
 
 const RootStack = createStackNavigator(
   {
